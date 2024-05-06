@@ -31,14 +31,14 @@ namespace ENROLLMENT_SYSTEM
 
             DataRow thisRow = thisDataSet.Tables["SubjectFile"].NewRow();
             thisRow["SSFEDPCODE"] = EDPCodeTextBox.Text;
-            thisRow["SFSSUBJDESC"] = DescriptionTextBox.Text;
-            thisRow["SFSSUBJUNITS"] = UnitsTextBox.Text;
-            thisRow["SFSSUBJREGOFRNG"] = OfferingComboBox.Text.Substring(0, 1);
-            thisRow["SFSSUBJCATEGORY"] = CategoryComboBox.Text.Substring(0, 3);
-            thisRow["SFSSUBJSTATUS"] = "AC";
-            thisRow["SFSSUBJCOURSECODE"] = CourseCodeComboBox.Text.Substring(0, 1);
-            thisRow["SFSSUBJCURRCODE"] = CurriculumYearTextBox.Text;
-
+            thisRow["SSFSUBJCODE"] = SubjectCodeTextBox.Text;
+            thisRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Text;
+            thisRow["SSFENDTIME"] = ExitTimeDateTimePicker.Text.Substring(0, 1);
+            thisRow["SSFDAYS"] = DaysTextBox.Text.Substring(0, 3);
+            thisRow["SSFROOM"] = RoomTextBox.Text;
+            thisRow["SSFXM"] = AMPMComboBox.Text;
+            thisRow["SSFSECTION"] = SectionsTextBox.Text;
+            thisRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text;
             thisDataSet.Tables["SubjectFile"].Rows.Add(thisRow);
             thisAdapter.Update(thisDataSet, "SubjectFile");
 
@@ -65,7 +65,7 @@ namespace ENROLLMENT_SYSTEM
                 while (thisDataReader.Read())
                 {
                     //MessageBox.Show(thisDataReader["SFSSUBJCODE"].ToString());
-                    if (thisDataReader["SFSSUBJCODE"].ToString().Trim().ToUpper() == SubjectCodeRequisiteTextBox.Text.Trim().ToUpper())
+                    if (thisDataReader["SFSSUBJCODE"].ToString().Trim().ToUpper() == SubjectCodeTextBox.Text.Trim().ToUpper())
                     {
                         found = true;
                         subjectCode = thisDataReader["SFSSUBJCODE"].ToString();
